@@ -1,0 +1,157 @@
+/* Admin Dashboard & Components */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.stats-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
+}
+.stats-card h3 {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* Patient Portal & Pillars */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.pillar-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+}
+.pillar-card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 32px rgba(234, 88, 12, 0.15);
+}
+.pillar-card:active {
+  transform: scale(0.98);
+}
+.pillar-icon { font-size: 2.5rem; }
+.pillar-title { font-weight: 700; font-size: 0.9rem; color: var(--foreground); }
+
+/* Modal & Forms */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 32px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  color: var(--foreground);
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cancel-btn {
+  background: #f3f4f6;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.cancel-btn:hover { background: #e5e7eb; color: var(--foreground); }
+
+/* Module Manager */
+.module-list {
+  list-style: none;
+  margin: 24px 0;
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 12px 24px;
+  border: 1px solid var(--card-border);
+}
+.module-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--card-border);
+}
+.module-item:last-child { border-bottom: none; }
+
+/* Audio Player */
+.audio-card {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, rgba(249, 115, 22, 0.1) 100%);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+  padding: 32px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+
+/* Games */
+.game-container { text-align: center; }
+.game-stats { 
+  display: flex; justify-content: space-around; 
+  margin-bottom: 32px; font-weight: 700; font-size: 1.25rem;
+  background: #fff;
+  padding: 16px;
+  border-radius: 999px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.cell {
+  aspect-ratio: 1;
+  background: #f3f4f6;
+  border-radius: 16px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.cell:hover {
+  background: #e5e7eb;
+}
+.cell.green { background: #10b981; border-color: #059669; transform: scale(1.05); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); }
+.cell.red { background: #ef4444; border-color: #dc2626; transform: scale(1.05); box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3); }

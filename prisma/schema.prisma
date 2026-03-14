@@ -1,0 +1,76 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String
+  role          String    @default("ADMIN") // ADMIN, PATIENT
+  patients      Patient[] @relation("PsychologistPatients")
+  createdAt     DateTime  @default(now())
+}
+
+model Patient {
+  id            String    @id @default(cuid())
+  username      String    @unique
+  passwordHash  String
+  name          String
+  avatarUrl     String?
+  dopas         Int       @default(0)
+  xp            Int       @default(0)
+  level         Int       @default(1)
+  psychologistId String
+  psychologist  User      @relation("PsychologistPatients", fields: [psychologistId], references: [id])
+  activeModules PatientModule[]
+  sessions      ActivitySession[]
+  notes         ClinicalNote[]
+  createdAt     DateTime  @default(now())
+}
+
+model Module {
+  id          String   @id @default(cuid())
+  name        String   @unique // e.g., "TDAH", "Ansiedade"
+  description String?
+  patients    PatientModule[]
+}
+
+model PatientModule {
+  id          String   @id @default(cuid())
+  patientId   String
+  moduleId    String
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  module      Module   @relation(fields: [moduleId], references: [id])
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@unique([patientId, moduleId])
+}
+
+model ActivitySession {
+  id          String   @id @default(cuid())
+  type        String   // PILAR_A, PILAR_B1, PILAR_B2, PILAR_C, PILAR_D
+  status      String   // STARTED, COMPLETED, FAILED
+  data        String?  // JSON string for specific results (errors, ratios, etc.)
+  dopasEarned Int      @default(0)
+  patientId   String
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  moduleId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ClinicalNote {
+  id          String   @id @default(cuid())
+  content     String
+  patientId   String
+  sessionId   String?
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  createdAt   DateTime @default(now())
+}

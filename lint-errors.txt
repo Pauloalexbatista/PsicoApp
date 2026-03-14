@@ -1,0 +1,44 @@
+﻿
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\public\workbox-e43f5367.js
+     3:5  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+    52:7  error  Definition for rule '@typescript-eslint/ban-types' was not found                                                     @typescript-eslint/ban-types
+   419:5  error  Definition for rule '@typescript-eslint/ban-types' was not found                                                     @typescript-eslint/ban-types
+   456:5  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  1185:5  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  1346:5  error  Definition for rule '@typescript-eslint/ban-types' was not found                                                     @typescript-eslint/ban-types
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\tdah\pilar-b\CacaLuzes.tsx
+  34:7  error  Error: Cannot access variable before it is declared
+
+`handleGameOver` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\tdah\pilar-b\CacaLuzes.tsx:34:7
+  32 |       spawnTimer = setInterval(spawnLight, 800);
+  33 |     } else if (timeLeft === 0 && isPlaying) {
+> 34 |       handleGameOver();
+     |       ^^^^^^^^^^^^^^ `handleGameOver` accessed before it is declared
+  35 |     }
+  36 |
+  37 |     return () => {
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\tdah\pilar-b\CacaLuzes.tsx:43:3
+  41 |   }, [isPlaying, timeLeft, spawnLight]);
+  42 |
+> 43 |   async function handleGameOver() {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 44 |     setIsPlaying(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |     const dopas = Math.max(0, score - errors * 2);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 46 |     await completeActivity(patientId, moduleId, "PILAR_B_CACA_LUZES", dopas);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |     alert(`Fim do Jogo! Pontos: ${score}, Erros: ${errors}. Ganhaste ${dopas} Dopas!`);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |   }
+     | ^^^^ `handleGameOver` is declared here
+  49 |
+  50 |   function handleClick(index: number) {
+  51 |     if (!isPlaying) return;  react-hooks/immutability
+
+Ô£û 7 problems (7 errors, 0 warnings)
+

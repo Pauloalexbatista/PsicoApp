@@ -1,0 +1,75 @@
+﻿
+> psico-app@0.1.0 lint
+> eslint
+
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\public\sw.js
+  79:9  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+  81:9  warning  'event' is defined but never used    @typescript-eslint/no-unused-vars
+  82:9  warning  'state' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\public\workbox-e43f5367.js
+     3:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+     5:7   warning  Expected an assignment or function call and instead saw an expression                                                @typescript-eslint/no-unused-expressions
+     6:14  warning  'e' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+    52:7   error    Definition for rule '@typescript-eslint/ban-types' was not found                                                     @typescript-eslint/ban-types
+   419:5   error    Definition for rule '@typescript-eslint/ban-types' was not found                                                     @typescript-eslint/ban-types
+   435:5   warning  Unused eslint-disable directive (no problems were reported)
+   456:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+   458:7   warning  Expected an assignment or function call and instead saw an expression                                                @typescript-eslint/no-unused-expressions
+   459:14  warning  'e' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+   752:11  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-unsafe-member-access')
+   754:13  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-unsafe-assignment')
+   948:11  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-unsafe-assignment')
+   964:13  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-unsafe-assignment')
+   970:13  warning  Unused eslint-disable directive (no problems were reported)
+  1185:5   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  1187:7   warning  Expected an assignment or function call and instead saw an expression                                                @typescript-eslint/no-unused-expressions
+  1188:14  warning  'e' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+  1346:5   error    Definition for rule '@typescript-eslint/ban-types' was not found                                                     @typescript-eslint/ban-types
+  1738:35  warning  Unused eslint-disable directive (no problems were reported)
+  2076:18  warning  'error' is defined but never used                                                                                    @typescript-eslint/no-unused-vars
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(admin)\patients\actions.ts
+  36:12  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\page.tsx
+  2:10  warning  'prisma' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\tdah\pilar-b\CacaLuzes.tsx
+  34:7  error    Error: Cannot access variable before it is declared
+
+`handleGameOver` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\tdah\pilar-b\CacaLuzes.tsx:34:7
+  32 |       spawnTimer = setInterval(spawnLight, 800);
+  33 |     } else if (timeLeft === 0 && isPlaying) {
+> 34 |       handleGameOver();
+     |       ^^^^^^^^^^^^^^ `handleGameOver` accessed before it is declared
+  35 |     }
+  36 |
+  37 |     return () => {
+
+C:\Users\paulo\.gemini\antigravity\playground\core-omega\PRJT PsicoApp\src\app\(patient)\tdah\pilar-b\CacaLuzes.tsx:43:3
+  41 |   }, [isPlaying, timeLeft, spawnLight]);
+  42 |
+> 43 |   async function handleGameOver() {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 44 |     setIsPlaying(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |     const dopas = Math.max(0, score - errors * 2);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 46 |     await completeActivity(patientId, moduleId, "PILAR_B_CACA_LUZES", dopas);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |     alert(`Fim do Jogo! Pontos: ${score}, Erros: ${errors}. Ganhaste ${dopas} Dopas!`);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |   }
+     | ^^^^ `handleGameOver` is declared here
+  49 |
+  50 |   function handleClick(index: number) {
+  51 |     if (!isPlaying) return;  react-hooks/immutability
+  41:6  warning  React Hook useEffect has a missing dependency: 'handleGameOver'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/exhaustive-deps
+
+Ô£û 27 problems (7 errors, 20 warnings)
+  0 errors and 7 warnings potentially fixable with the `--fix` option.
+
