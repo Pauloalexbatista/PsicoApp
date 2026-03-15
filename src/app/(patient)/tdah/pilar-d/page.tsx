@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function PilarDPage({ patientId }: { patientId?: string }) {
+export default function PilarDPage({}: { searchParams?: Promise<any> }) {
   const openHumorModal = () => {
      // A hack to force the layout modal to show again if they click here
      // Alternatively, we could manage state via Context, but for now we'll just clear the local storage item and reload
