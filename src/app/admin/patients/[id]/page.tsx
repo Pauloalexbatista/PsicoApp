@@ -54,7 +54,7 @@ export default async function PatientHistoryPage(props: Props) {
         </div>
       </div>
 
-      <PatientHistoryTable sessions={patient.sessions} />
+      <PatientHistoryTable sessions={patient.sessions} patientName={patient.name} />
 
     </div>
   );

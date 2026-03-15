@@ -25,12 +25,29 @@ export default function PilarBPage() {
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Atenção e reflexos rápidos</p>
           </div>
         </Link>
+        <Link href="/tdah/pilar-b/ordenar-letras" style={{ textDecoration: 'none' }}>
+           <div className="pillar-card">
+            <span className="pillar-icon">🔤</span>
+            <span className="pillar-title">Ordenar Letras</span>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Sequência Alfabeto</p>
+          </div>
+        </Link>
         
-        <div className="pillar-card" style={{ opacity: 0.6 }}>
-          <span className="pillar-icon">🧩</span>
-          <span className="pillar-title">Puzzle Espacial</span>
-           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Em Breve</p>
-        </div>
+        <Link href="/tdah/pilar-b/ordenar-numeros" style={{ textDecoration: 'none' }}>
+           <div className="pillar-card">
+            <span className="pillar-icon">🔢</span>
+            <span className="pillar-title">Ordenar Números</span>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Sequência Lógica</p>
+          </div>
+        </Link>
+        
+        <Link href="/tdah/pilar-b/construtor-palavras" style={{ textDecoration: 'none' }}>
+           <div className="pillar-card">
+            <span className="pillar-icon">🧩</span>
+            <span className="pillar-title">Construtor Palavras</span>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '4px' }}>Imagens em Palavras</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,50 @@
+/* Styles for printing the Questionnaire Modal without the background page */
+@media print {
+  body {
+    visibility: hidden;
+  }
+  
+  /* OVERRIDE THE FIXED OVERLAY */
+  #questionnaire-print-modal-wrapper {
+    visibility: visible;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important; /* KILL FLEXBOX */
+    width: 100% !important;
+    height: auto !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #questionnaire-print-modal {
+    visibility: visible;
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Table styling specifically for print */
+  #questionnaire-print-modal table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  
+  #questionnaire-print-modal tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  /* Hide the print and close buttons during printing */
+  .no-print {
+    display: none !important;
+  }
+}

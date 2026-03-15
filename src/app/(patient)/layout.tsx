@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import "./patient.css";
+import DailyCheckinModal from "@/components/DailyCheckinModal";
 
 import { logoutAction } from "./actions";
 
@@ -19,6 +20,10 @@ export default async function PatientLayout({
 
   const patient = await prisma.patient.findUnique({
     where: { id: session.user.id }
+  });
+
+  const activeModule = await prisma.module.findFirst({
+    where: { name: 'TDAH' }
   });
 
   return (
@@ -49,6 +54,9 @@ export default async function PatientLayout({
       
       <main className="content">
         {children}
+        {patient && activeModule && (
+           <DailyCheckinModal patientId={patient.id} moduleId={activeModule.id} />
+        )}
       </main>
 
       <nav className="bottom-nav">
