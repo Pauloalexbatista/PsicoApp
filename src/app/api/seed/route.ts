@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 
 export async function GET(request: Request) {
-  // Simple protection to avoid random internet people reseeding (check for a secret password query param)
   const url = new URL(request.url);
   const secret = url.searchParams.get('secret');
 
@@ -16,7 +15,7 @@ export async function GET(request: Request) {
     const tomasPasswordHash = await bcrypt.hash("tomas123", 10);
 
     // 1. Criar Psicóloga Admin
-    await prisma.user.upsert({
+    const adminUser = await prisma.user.upsert({
       where: { email: "admin@psicoapp.pt" },
       update: {
          passwordHash: adminPasswordHash,
@@ -29,8 +28,8 @@ export async function GET(request: Request) {
       },
     });
 
-    // 2. Criar Módulo TDAH associado à BD
-    await prisma.module.upsert({
+    // 2. Criar Módulo TDAH
+    const tdahModule = await prisma.module.upsert({
       where: { name: "TDAH" },
       update: {},
       create: {
@@ -39,19 +38,34 @@ export async function GET(request: Request) {
       },
     });
 
-    // 3. Criar Paciente Tomás
-    await prisma.patient.upsert({
-      where: { email: "tomas@example.com" },
+    // 3. Criar Paciente Tomás ligado à Psicóloga
+    const patientTomas = await prisma.patient.upsert({
+      where: { username: "tomas" },
       update: {
          passwordHash: tomasPasswordHash,
       },
       create: {
-        email: "tomas@example.com",
+        username: "tomas",
         name: "Tomás",
-        age: 12,
         passwordHash: tomasPasswordHash,
-        modules: JSON.stringify(["TDAH"]),
+        psychologistId: adminUser.id,
       },
+    });
+
+    // 4. Ligar Paciente ao Módulo TDAH
+    await prisma.patientModule.upsert({
+      where: {
+        patientId_moduleId: {
+           patientId: patientTomas.id,
+           moduleId: tdahModule.id
+        }
+      },
+      update: {},
+      create: {
+        patientId: patientTomas.id,
+        moduleId: tdahModule.id,
+        isActive: true
+      }
     });
 
     return NextResponse.json({ 
@@ -59,7 +73,7 @@ export async function GET(request: Request) {
       message: "Base de Dados semeada com sucesso no Servidor!",
       credentials: {
          admin: "admin@psicoapp.pt / admin123",
-         patient: "tomas@example.com / tomas123"
+         patient: "tomas / tomas123"
       }
     });
   } catch (error: any) {
