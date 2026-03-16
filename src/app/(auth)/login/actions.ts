@@ -28,7 +28,7 @@ export async function authenticate(prevState: string | undefined, formData: Form
         name: user.name,
         role: user.role,
       });
-      redirectUrl = "/dashboard";
+      redirectUrl = "/admin/dashboard";
     }
 
     // Check if it's a patient
